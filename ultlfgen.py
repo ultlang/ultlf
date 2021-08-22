@@ -181,4 +181,5 @@ def generate():
 	with open('ultlf-data/baselines.json', 'w') as outfile:
 		json.dump(baselines, outfile)
 
-generate()
+if __name__ == "__main__":
+	generate()

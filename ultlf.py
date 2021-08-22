@@ -141,4 +141,6 @@ def genimage(text, col, bg, bold, spacing):
 		print("printed " + text)
 		return True
 
-termprint("amogus trolface")
+
+if __name__ == "__main__":
+	termprint("amogus trolface")
