@@ -4,9 +4,9 @@ sfd = """SplineFontDB: 3.2
 FontName: ultlf
 FullName: ultlf
 FamilyName: ultlf
-Copyright: Copyright (c) 2069, ultlang
-UComments: "2021-8-22: Created with Bees (http://fontforge.org)"
-Version: 000.001
+Copyright: Copyright (c) 2021, ultlang
+UComments: "Created with Bees"
+Version: 000.002
 ItalicAngle: 0
 UnderlinePosition: -115
 UnderlineWidth: 57
@@ -53,5 +53,5 @@ for charindex, char in enumerate(chardata):
 
 sfd = sfd + str(chnum) + "\n" + sfdchars
 
-with open('test.sfd', "w") as f:
+with open('ultlf.sfd', "w") as f:
 	f.write(sfd)

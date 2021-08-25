@@ -5,6 +5,9 @@ import json
 
 from dotenv import load_dotenv
 import os
+
+os.system("color")
+
 load_dotenv()
 PNG_LOC = os.getenv('PNG_LOC')
 
@@ -31,6 +34,12 @@ def generate():
 	codepointrows = []
 
 	tablerow = 0
+
+	rowcount = 0
+	for px in np.swapaxes(data, 0, 1)[17]:
+		if np.all(px == gray):
+			rowcount += 1
+	print(rowcount)
 
 	for rowindex, row in enumerate(range(0,data.shape[0])):
 		the = rowindex
@@ -82,7 +91,7 @@ def generate():
 				unithing[tablerow].append(line)
 			
 			tablerow += 1
-			#print(str(tablerow) + " -> " + str(rowindex))
+			print("\033[1Fgenerating, " +str(round(tablerow / (rowcount/100))) + "% complete")
 
 	for metarow in unithing:
 
