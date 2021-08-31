@@ -9,6 +9,7 @@ import os
 import ultlfgen
 import discord
 import asyncio
+import bidi.algorithm as bidi
 
 
 from dotenv import load_dotenv
@@ -31,147 +32,164 @@ replacements = [
 	[":chungus:","\ue004"],
 	["[chungus]","\ue004"],
 	#region toki pona
-	["[tpA]","\ue200"],
-	["[tpAkesi]","\ue201"],
-	["[tpAla]","\ue202"],
-	["[tpAlasa]","\ue203"],
-	["[tpAle]","\ue204"],
-	["[tpAli]","\ue204"], # alternates c:
-	["[tpAnpa]","\ue205"],
-	["[tpAnte]","\ue206"],
-	["[tpAnu]","\ue207"],
-	["[tpAwen]","\ue208"],
-	["[tpE]","\ue209"],
-	["[tpEn]","\ue20a"],
-	["[tpEsun]","\ue20b"],
-	["[tpIjo]","\ue20c"],
-	["[tpIke]","\ue20d"],
-	["[tpIlo]","\ue20e"],
-	["[tpInsa]","\ue20f"],
-	["[tpJaki]","\ue210"],
-	["[tpJan]","\ue211"],
-	["[tpJelo]","\ue212"],
-	["[tpJo]","\ue213"],
-	["[tpKala]","\ue214"],
-	["[tpKalama]","\ue215"],
-	["[tpKama]","\ue216"],
-	["[tpKasi]","\ue217"],
-	["[tpKen]","\ue218"],
-	["[tpKepeken]","\ue219"],
-	["[tpKili]","\ue21a"],
-	["[tpKiwen]","\ue21b"],
-	["[tpKo]","\ue21c"],
-	["[tpKon]","\ue21d"],
-	["[tpKule]","\ue21e"],
-	["[tpKulupu]","\ue21f"],
-	["[tpKute]","\ue220"],
-	["[tpLa]","\ue221"],
-	["[tpLape]","\ue222"],
-	["[tpLaso]","\ue223"],
-	["[tpLawa]","\ue224"],
-	["[tpLen]","\ue225"],
-	["[tpLete]","\ue226"],
-	["[tpLi]","\ue227"],
-	["[tpLili]","\ue228"],
-	["[tpLinja]","\ue229"],
-	["[tpLipu]","\ue22a"],
-	["[tpLoje]","\ue22b"],
-	["[tpLon]","\ue22c"],
-	["[tpLuka]","\ue22d"],
-	["[tpLukin]","\ue22e"],
-	["[tpLupa]","\ue22f"],
-	["[tpMa]","\ue230"],
-	["[tpMama]","\ue231"],
-	["[tpMani]","\ue232"],
-	["[tpMeli]","\ue233"],
-	["[tpMi]","\ue234"],
-	["[tpMije]","\ue235"],
-	["[tpMoku]","\ue236"],
-	["[tpMoli]","\ue237"],
-	["[tpMonsi]","\ue238"],
-	["[tpMu]","\ue239"],
-	["[tpMun]","\ue23a"],
-	["[tpMusi]","\ue23b"],
-	["[tpMute]","\ue23c"],
-	["[tpNanpa]","\ue23d"],
-	["[tpNasa]","\ue23e"],
-	["[tpNasin]","\ue23f"],
-	["[tpNena]","\ue240"],
-	["[tpNi]","\ue241"],
-	["[tpNimi]","\ue242"],
-	["[tpNoka]","\ue243"],
-	["[tpO]","\ue244"],
-	["[tpOlin]","\ue245"],
-	["[tpOna]","\ue246"],
-	["[tpOpen]","\ue247"],
-	["[tpPakala]","\ue248"],
-	["[tpPali]","\ue249"],
-	["[tpPalisa]","\ue24a"],
-	["[tpPan]","\ue24b"],
-	["[tpPana]","\ue24c"],
-	["[tpPi]","\ue24d"],
-	["[tpPilin]","\ue24e"],
-	["[tpPimeja]","\ue24f"],
-	["[tpPini]","\ue250"],
-	["[tpPipi]","\ue251"],
-	["[tpPoka]","\ue252"],
-	["[tpPoki]","\ue253"],
-	["[tpPona]","\ue254"],
-	["[tpPu]","\ue255"],
-	["[tpSama]","\ue256"],
-	["[tpSeli]","\ue257"],
-	["[tpSelo]","\ue258"],
-	["[tpSeme]","\ue259"],
-	["[tpSewi]","\ue25a"],
-	["[tpSijelo]","\ue25b"],
-	["[tpSike]","\ue25c"],
-	["[tpSin]","\ue25d"],
-	["[tpSina]","\ue25e"],
-	["[tpSinpin]","\ue25f"],
-	["[tpSitelen]","\ue260"],
-	["[tpSona]","\ue261"],
-	["[tpSoweli]","\ue262"],
-	["[tpSuli]","\ue263"],
-	["[tpSuno]","\ue264"],
-	["[tpSupa]","\ue265"],
-	["[tpSuwi]","\ue266"],
-	["[tpTan]","\ue267"],
-	["[tpTaso]","\ue268"],
-	["[tpTawa]","\ue269"],
-	["[tpTelo]","\ue26a"],
-	["[tpTenpo]","\ue26b"],
-	["[tpToki]","\ue26c"],
-	["[tpTomo]","\ue26d"],
-	["[tpTu]","\ue26e"],
-	["[tpUnpa]","\ue26f"],
-	["[tpUta]","\ue270"],
-	["[tpUtala]","\ue271"],
-	["[tpWalo]","\ue272"],
-	["[tpWan]","\ue273"],
-	["[tpWaso]","\ue274"],
-	["[tpWawa]","\ue275"],
-	["[tpWeka]","\ue276"],
-	["[tpWile]","\ue277"],
-	["[tpNamako]","\ue278"],
-	["[tpKin]","\ue279"],
-	["[tpOko]","\ue27a"],
-	["[tpKipisi]","\ue27b"],
-	["[tpLeko]","\ue27c"],
-	["[tpMonsuta]","\ue27d"],
-	["[tpMisikeke]","\ue27e"],
-	["[tpTonsi]","\ue27f"],
-	["[tpJasima]","\ue280"],
-	["[tpSoko]","\ue281"],
-	["[tpMeso]","\ue282"],
-	["[tpEpiku]","\ue283"],
-	["[tpKokosila]","\ue284"],
-	["[tpLanpan]","\ue285"],
-	["[tpN]","\ue286"],
-	["[tpKijetesantakalu]","\ue287"],
-	["[tpKu]","\ue288"],
+	["[tp_a]","\ue200"],
+	["[tp_akesi]","\ue201"],
+	["[tp_ala]","\ue202"],
+	["[tp_alasa]","\ue203"],
+	["[tp_ale]","\ue204"],
+	["[tp_ali]","\ue204"], # alternates c:
+	["[tp_anpa]","\ue205"],
+	["[tp_ante]","\ue206"],
+	["[tp_anu]","\ue207"],
+	["[tp_awen]","\ue208"],
+	["[tp_e]","\ue209"],
+	["[tp_en]","\ue20a"],
+	["[tp_esun]","\ue20b"],
+	["[tp_ijo]","\ue20c"],
+	["[tp_ike]","\ue20d"],
+	["[tp_ilo]","\ue20e"],
+	["[tp_insa]","\ue20f"],
+	["[tp_jaki]","\ue210"],
+	["[tp_jan]","\ue211"],
+	["[tp_jelo]","\ue212"],
+	["[tp_jo]","\ue213"],
+	["[tp_kala]","\ue214"],
+	["[tp_kalama]","\ue215"],
+	["[tp_kama]","\ue216"],
+	["[tp_kasi]","\ue217"],
+	["[tp_ken]","\ue218"],
+	["[tp_kepeken]","\ue219"],
+	["[tp_kili]","\ue21a"],
+	["[tp_kiwen]","\ue21b"],
+	["[tp_ko]","\ue21c"],
+	["[tp_kon]","\ue21d"],
+	["[tp_kule]","\ue21e"],
+	["[tp_kulupu]","\ue21f"],
+	["[tp_kute]","\ue220"],
+	["[tp_la]","\ue221"],
+	["[tp_lape]","\ue222"],
+	["[tp_laso]","\ue223"],
+	["[tp_lawa]","\ue224"],
+	["[tp_len]","\ue225"],
+	["[tp_lete]","\ue226"],
+	["[tp_li]","\ue227"],
+	["[tp_lili]","\ue228"],
+	["[tp_linja]","\ue229"],
+	["[tp_lipu]","\ue22a"],
+	["[tp_loje]","\ue22b"],
+	["[tp_lon]","\ue22c"],
+	["[tp_luka]","\ue22d"],
+	["[tp_lukin]","\ue22e"],
+	["[tp_lupa]","\ue22f"],
+	["[tp_ma]","\ue230"],
+	["[tp_mama]","\ue231"],
+	["[tp_mani]","\ue232"],
+	["[tp_meli]","\ue233"],
+	["[tp_mi]","\ue234"],
+	["[tp_mije]","\ue235"],
+	["[tp_moku]","\ue236"],
+	["[tp_moli]","\ue237"],
+	["[tp_monsi]","\ue238"],
+	["[tp_mu]","\ue239"],
+	["[tp_mun]","\ue23a"],
+	["[tp_musi]","\ue23b"],
+	["[tp_mute]","\ue23c"],
+	["[tp_nanpa]","\ue23d"],
+	["[tp_nasa]","\ue23e"],
+	["[tp_nasin]","\ue23f"],
+	["[tp_nena]","\ue240"],
+	["[tp_ni]","\ue241"],
+	["[tp_nimi]","\ue242"],
+	["[tp_noka]","\ue243"],
+	["[tp_o]","\ue244"],
+	["[tp_olin]","\ue245"],
+	["[tp_ona]","\ue246"],
+	["[tp_open]","\ue247"],
+	["[tp_pakala]","\ue248"],
+	["[tp_pali]","\ue249"],
+	["[tp_palisa]","\ue24a"],
+	["[tp_pan]","\ue24b"],
+	["[tp_pana]","\ue24c"],
+	["[tp_pi]","\ue24d"],
+	["[tp_pilin]","\ue24e"],
+	["[tp_pimeja]","\ue24f"],
+	["[tp_pini]","\ue250"],
+	["[tp_pipi]","\ue251"],
+	["[tp_poka]","\ue252"],
+	["[tp_poki]","\ue253"],
+	["[tp_pona]","\ue254"],
+	["[tp_pu]","\ue255"],
+	["[tp_sama]","\ue256"],
+	["[tp_seli]","\ue257"],
+	["[tp_selo]","\ue258"],
+	["[tp_seme]","\ue259"],
+	["[tp_sewi]","\ue25a"],
+	["[tp_sijelo]","\ue25b"],
+	["[tp_sike]","\ue25c"],
+	["[tp_sin]","\ue25d"],
+	["[tp_sina]","\ue25e"],
+	["[tp_sinpin]","\ue25f"],
+	["[tp_sitelen]","\ue260"],
+	["[tp_sona]","\ue261"],
+	["[tp_soweli]","\ue262"],
+	["[tp_suli]","\ue263"],
+	["[tp_suno]","\ue264"],
+	["[tp_supa]","\ue265"],
+	["[tp_suwi]","\ue266"],
+	["[tp_tan]","\ue267"],
+	["[tp_taso]","\ue268"],
+	["[tp_tawa]","\ue269"],
+	["[tp_telo]","\ue26a"],
+	["[tp_tenpo]","\ue26b"],
+	["[tp_toki]","\ue26c"],
+	["[tp_tomo]","\ue26d"],
+	["[tp_tu]","\ue26e"],
+	["[tp_unpa]","\ue26f"],
+	["[tp_uta]","\ue270"],
+	["[tp_utala]","\ue271"],
+	["[tp_walo]","\ue272"],
+	["[tp_wan]","\ue273"],
+	["[tp_waso]","\ue274"],
+	["[tp_wawa]","\ue275"],
+	["[tp_weka]","\ue276"],
+	["[tp_wile]","\ue277"],
+	["[tp_namako]","\ue278"],
+	["[tp_kin]","\ue279"],
+	["[tp_oko]","\ue27a"],
+	["[tp_kipisi]","\ue27b"],
+	["[tp_leko]","\ue27c"],
+	["[tp_monsuta]","\ue27d"],
+	["[tp_misikeke]","\ue27e"],
+	["[tp_tonsi]","\ue27f"],
+	["[tp_jasima]","\ue280"],
+	["[tp_soko]","\ue281"],
+	["[tp_meso]","\ue282"],
+	["[tp_epiku]","\ue283"],
+	["[tp_kokosila]","\ue284"],
+	["[tp_lanpan]","\ue285"],
+	["[tp_n]","\ue286"],
+	["[tp_kijetesantakalu]","\ue287"],
+	["[tp_ku]","\ue288"],
+	["[tp_apeja]","\ue289"],
 	#endregion
 	["​",""] #zwsp deletion trol
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def format(str, spacing = 1):
 
@@ -186,7 +204,7 @@ def format(str, spacing = 1):
 	with open('ultlf-data/baselines.json') as f:
 		baselines = json.load(f)                     # load the things.
 
-	string = str
+	string = bidi.get_display(str)
 	for n in range(len(replacements)):
 		string = string.replace(replacements[n][0],replacements[n][1])
 	# `string` now has the replacements
@@ -248,7 +266,7 @@ def format(str, spacing = 1):
 def termprint(string):
 	data, bline, err = format(string, 1)
 	for line in data:
-		print(line)
+		print("".join([2*char for char in line]))
 
 def imgprint(imgarray, str, xpos, ypos, colour, spacing):
 	formatted, baseline, err = format(str, spacing)
@@ -261,9 +279,9 @@ def imgprint(imgarray, str, xpos, ypos, colour, spacing):
 	else:
 		print("uh oh")
 
-def genimage(text, col = [0,0,0], bg = [255,255,255], bold = False, spacing = 1, vspacing = 11):
-	if bold:
-		text = "".join([chr(ord(i) + 57344) for i in text])
+def genimage(text, col = [0,0,0], bg = [255,255,255], spacing = 1, vspacing = 11):
+	# if bold:
+	# 	text = "".join([chr(ord(i) + 57344) for i in text]) : removed
 
 	lines = text.split("\n")
 	
@@ -278,8 +296,8 @@ def genimage(text, col = [0,0,0], bg = [255,255,255], bold = False, spacing = 1,
 				print("unsupported char " + err[-1])
 				return "the character " + err[-1] + " is not supported by ultlf."
 		else:
-			output = "bee"
-			bl = "yo mama"
+			output = "#"
+			bl = 0
 		formattedlines.append(output)
 		bls.append(bl)
 		
@@ -301,7 +319,6 @@ def genimage(text, col = [0,0,0], bg = [255,255,255], bold = False, spacing = 1,
 	return True
 
 if __name__ == "__main__":
-	format("æ")
 
 	with open('ultlf-data/codepoints.json') as f:
 		codepoints = json.load(f)
@@ -327,4 +344,179 @@ if __name__ == "__main__":
 		if (e+æ) % 16 == 15 and (e+æ) != œ:
 			thing += "\n "
 	thing += " " * (15 - (œ % 16))
-	genimage(thing, vspacing = 17)
+	#genimage(thing, vspacing = 17)
+
+	#region tokirap lyrics
+	tokirap_sp = """[tp_toki]! [tp_ni][tp_la][tp_mi][tp_toki][tp_musi][tp_e][tp_nimi][tp_ale][tp_pi][tp_toki][tp_pona]! 
+[tp_sina][tp_ken][tp_kute][tp_taso]. [tp_mi][tp_pali][tp_e][tp_ijo][tp_suli].
+[tp_mi][tp_o][tp_open]!
+ 
+[tp_jan][tp_li][tp_wile][tp_awen][tp_sona][tp_e][tp_nimi] 
+[tp_la][tp_ona][tp_li][tp_wile][tp_kute][tp_e][tp_musi][tp_ni]!
+ 
+[tp_mi],[tp_sina],[tp_ni],[tp_ona]
+[tp_olin],[tp_musi],[tp_suwi],[tp_pona]
+[tp_li],[tp_e],[tp_la],[tp_pi],[tp_o]
+[tp_anu],[tp_en],[tp_seme],[tp_ijo]
+
+[tp_toki][tp_ni][tp_li][tp_jo][tp_e][tp_nimi][tp_ni]
+[tp_toki][tp_pona]!
+
+[tp_ni][tp_li][tp_nasin][tp_nasa][tp_pi][tp_kama][tp_sona]
+[tp_taso],[tp_ona][tp_li][tp_pali][tp_la][tp_ale][tp_li][tp_pona]
+ 
+[tp_kule],[tp_lukin],[tp_kalama],[tp_kute]
+[tp_ala],[tp_wan],[tp_tu],[tp_mute]
+[tp_soweli],[tp_akesi],[tp_pipi],[tp_waso]
+[tp_kala],[tp_loje],[tp_jelo],[tp_laso]
+
+[tp_toki][tp_ni][tp_li][tp_jo][tp_e][tp_nimi][tp_ni]
+[tp_nimi][tp_ale][tp_lon][tp_toki]...!
+ 
+[tp_moli],[tp_utala],[tp_pakala],[tp_ike]
+[tp_nena],[tp_lupa],[tp_leko],[tp_sike]
+[tp_lon],[tp_tan],[tp_kepeken],[tp_tawa]
+[tp_luka],[tp_noka],[tp_sijelo],[tp_lawa]
+ 
+[tp_o][tp_kama][tp_sona]! [tp_o][tp_kama][tp_sona]!
+[tp_o][tp_kama][tp_sona]! [tp_o][tp_kama][tp_sona]! [tp_e]
+[tp_nimi][tp_ale][tp_lon][tp_toki][tp_pona]!
+ 
+[tp_supa],[tp_linja],[tp_insa],[tp_selo]
+[tp_ko],[tp_kiwen],[tp_kon],[tp_telo]
+[tp_sewi],[tp_anpa],[tp_sinpin],[tp_monsi]
+[tp_jan],[tp_meli],[tp_mije],[tp_tonsi]
+ 
+[tp_pona]! [tp_ni][tp_la][tp_mi][tp_tu][tp_e][tp_nasin]!
+[tp_taso],[tp_musi][tp_li][tp_pini][tp_ala].
+[tp_mi][tp_o][tp_awen]!
+ 
+[tp_poka],[tp_nasin],[tp_kulupu],[tp_poki]
+[tp_sitelen],[tp_nimi],[tp_lipu],[tp_toki]
+[tp_lete],[tp_seli],[tp_suli],[tp_lili]
+[tp_kasi],[tp_pan],[tp_moku],[tp_kili]
+ 
+[tp_nimi][tp_ale][tp_mute][tp_luka][tp_luka][tp_tu][tp_taso][tp_la]
+[tp_jan][tp_ale][tp_li][tp_ken][tp_lon][tp_kulupu][tp_pi][tp_toki][tp_pona]
+ 
+[tp_nasa],[tp_ante],[tp_jasima],[tp_sama]
+[tp_lape],[tp_tomo],[tp_pali],[tp_mama]
+[tp_ma],[tp_suno],[tp_mun],[tp_palisa]
+[tp_ilo],[tp_nanpa],[tp_sona],[tp_alasa]
+ 
+[tp_pona][tp_a]! [tp_o][tp_moku][tp_e][tp_kon]. [tp_nimi][tp_mute][tp_mute][tp_taso][tp_li][tp_kama].
+[tp_o][tp_kute][tp_pona]!
+ 
+[tp_kama],[tp_open],[tp_awen],[tp_pini]
+[tp_wile],[tp_esun],[tp_mani],[tp_kipisi]
+[tp_pana],[tp_jo],[tp_lanpan],[tp_tenpo]
+[tp_weka],[tp_jaki],[tp_ale],[tp_meso]
+[tp_pilin],[tp_uta],[tp_unpa],[tp_oko]
+[tp_ken],[tp_sin],[tp_namako],[tp_soko]
+ 
+[tp_o][tp_kama][tp_sona]! [tp_o][tp_kama][tp_sona]!
+[tp_o][tp_kama][tp_sona]! [tp_o][tp_kama][tp_sona]! [tp_e]
+[tp_nimi][tp_ale][tp_lon][tp_toki][tp_pona]!
+ 
+[tp_len],[tp_taso],[tp_walo],[tp_pimeja]
+[tp_mu],[tp_wawa],[tp_a],[tp_monsuta]
+[tp_n],[tp_kin],[tp_misikeke],[tp_epiku]
+[tp_kokosila],[tp_pu],[tp_ku],[tp_kijetesantakalu]
+ 
+[tp_toki][tp_ni][tp_li][tp_jo][tp_e][tp_nimi][tp_ni]
+[tp_nimi][tp_ale][tp_lon][tp_toki]...
+[tp_toki][tp_ni][tp_li][tp_jo][tp_e][tp_nimi][tp_ni]
+[tp_nimi][tp_ale][tp_lon][tp_toki]...
+[tp_toki][tp_ni][tp_li][tp_jo][tp_e][tp_nimi][tp_ni]
+[tp_nimi][tp_ale][tp_lon][tp_toki]...
+[tp_toki][tp_ni][tp_li][tp_jo][tp_e][tp_nimi][tp_ni]
+[tp_nimi][tp_ale][tp_lon][tp_toki][tp_pona]!"""
+
+	tokirap_la = """toki! ni la mi toki musi e nimi ale pi toki pona! 
+sina ken kute taso. mi pali e ijo suli .
+mi o open!
+ 
+jan li wile awen sona e nimi 
+la ona li wile kute e musi ni!
+ 
+mi, sina, ni, ona
+olin, musi, suwi, pona
+li, e, la, pi, o
+anu, en, seme, ijo
+
+toki ni li jo e nimi ni
+toki pona!
+
+ni li nasin nasa pi kama sona
+taso, ona li pali la ale li pona
+ 
+kule, lukin, kalama, kute
+ala, wan, tu, mute
+soweli, akesi, pipi, waso
+kala, loje, jelo, laso
+
+toki ni li jo e nimi ni
+nimi ale lon toki...!
+ 
+moli, utala, pakala, ike
+nena, lupa, leko, sike
+lon, tan, kepeken, tawa
+luka, noka, sijelo, lawa
+ 
+o kama sona! o kama sona!
+o kama sona! o kama sona! e
+nimi ale lon toki pona!
+ 
+supa, linja, insa, selo
+ko, kiwen, kon, telo
+sewi, anpa, sinpin, monsi
+jan, meli, mije, tonsi
+ 
+pona! ni la mi tu e nasin!
+taso, musi li pini ala.
+mi o awen!
+ 
+poka, nasin, kulupu, poki
+sitelen, nimi, lipu, toki
+lete, seli, suli, lili
+kasi, pan, moku, kili
+ 
+nimi ale mute luka luka tu taso la
+jan ale li ken lon kulupu pi toki pona
+ 
+nasa, ante, jasima, sama
+lape, tomo, pali, mama
+ma, suno, mun, palisa
+ilo, nanpa, sona, alasa
+ 
+pona a! o moku e kon. nimi mute mute taso li kama.
+o kute pona!
+ 
+kama, open, awen, pini
+wile, esun, mani, kipisi
+pana, jo, lanpan, tenpo
+weka, jaki, ale, meso
+pilin, uta, unpa, oko
+ken, sin, namako, soko
+ 
+o kama sona! o kama sona!
+o kama sona! o kama sona! e
+nimi ale lon toki pona!
+ 
+len, taso, walo, pimeja
+mu, wawa, a, monsuta
+n, kin, misikeke, epiku
+kokosila, pu, ku, kijetesantakalu
+ 
+toki ni li jo e nimi ni
+nimi ale lon toki...
+toki ni li jo e nimi ni
+nimi ale lon toki...
+toki ni li jo e nimi ni
+nimi ale lon toki...
+toki ni li jo e nimi ni
+nimi ale lon toki pona!
+"""
+	#endregion
+	
+	# genimage(tokirap_sp)
