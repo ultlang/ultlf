@@ -1,3 +1,4 @@
+from codecs import xmlcharrefreplace_errors
 import numpy as np
 from PIL import Image
 import PIL
@@ -283,11 +284,54 @@ def genimage(text, col = [0,0,0], bg = [255,255,255], spacing = 1, vspacing = 11
 	# if bold:
 	# 	text = "".join([chr(ord(i) + 57344) for i in text]) : removed
 
+
+	text = bidi.get_display(text)
+	for n in range(len(replacements)):
+		text = text.replace(replacements[n][0],replacements[n][1])
+
 	lines = text.split("\n")
+
+	linethreshold = 200
+
+	linesx = []
+
+	for line in lines:
+		if line == "":
+			linesx  += " "
+			continue
+		linesussier = []
+		amog = False
+		sussoid = line
+		while not amog:
+			linesus = []
+			if len( format(sussoid)[0][0] ) <= linethreshold:
+				amog = True
+				break
+			while len( format(sussoid)[0][0] ) > linethreshold:
+				thing = sussoid.split(" ")
+				while len( format( thing[0])[0][0] ) > linethreshold:
+					amogushappymeal = thing.pop(0)
+					for x in reversed( range(len(amogushappymeal)) ):
+						if len( format(amogushappymeal[:x] + "-")[0][0] ) < linethreshold:
+							thing.insert(0, (amogushappymeal[:x] + "-"))
+							thing.insert(1, amogushappymeal[x:])
+							break
+
+				linesus.insert(0, thing.pop())
+				sussoid = " ".join(thing)
+				print(sussoid)
+			linesussier.append(sussoid)
+			print(linesussier)
+			sussoid = " ".join(linesus)
+		linesx += linesussier
+		linesx.append(sussoid)
 	
+	lines = linesx 
+
 	formattedlines = []
 	bls = []
 	errs = []
+
 
 	for line in lines:
 		if line != "":
@@ -345,6 +389,8 @@ if __name__ == "__main__":
 			thing += "\n "
 	thing += " " * (15 - (œ % 16))
 	#genimage(thing, vspacing = 17)
+
+	genimage("amoguguguguguisdgsfhdgosdjiofgsdnfgiovaudrféviaufiovauovghi da  fhiauf ahf dhf jdhf jhdf jhd fj hdjfh jdf fhiauf ahf dhf jdhf jhdf jhd fj hdjfh jdf fhiau\nf ahf dhf jdhf jhdf jhd fj hdjfh jdf jdhf hd fjh")
 
 	#region tokirap lyrics
 	tokirap_sp = """[tp_toki]! [tp_ni][tp_la][tp_mi][tp_toki][tp_musi][tp_e][tp_nimi][tp_ale][tp_pi][tp_toki][tp_pona]! 
