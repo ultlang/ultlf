@@ -1,0 +1,84 @@
+[tp_toki]! [tp_ni][tp_la][tp_mi][tp_toki][tp_musi][tp_e][tp_nimi][tp_ale][tp_pi][tp_toki][tp_pona]! 
+[tp_sina][tp_ken][tp_kute][tp_taso]. [tp_mi][tp_pali][tp_e][tp_ijo][tp_suli].
+[tp_mi][tp_o][tp_open]!
+ 
+[tp_jan][tp_li][tp_wile][tp_awen][tp_sona][tp_e][tp_nimi] 
+[tp_la][tp_ona][tp_li][tp_wile][tp_kute][tp_e][tp_musi][tp_ni]!
+ 
+[tp_mi],[tp_sina],[tp_ni],[tp_ona]
+[tp_olin],[tp_musi],[tp_suwi],[tp_pona]
+[tp_li],[tp_e],[tp_la],[tp_pi],[tp_o]
+[tp_anu],[tp_en],[tp_seme],[tp_ijo]
+
+[tp_toki][tp_ni][tp_li][tp_jo][tp_e][tp_nimi][tp_ni]
+[tp_toki][tp_pona]!
+
+[tp_ni][tp_li][tp_nasin][tp_nasa][tp_pi][tp_kama][tp_sona]
+[tp_taso],[tp_ona][tp_li][tp_pali][tp_la][tp_ale][tp_li][tp_pona]
+ 
+[tp_kule],[tp_lukin],[tp_kalama],[tp_kute]
+[tp_ala],[tp_wan],[tp_tu],[tp_mute]
+[tp_soweli],[tp_akesi],[tp_pipi],[tp_waso]
+[tp_kala],[tp_loje],[tp_jelo],[tp_laso]
+
+[tp_toki][tp_ni][tp_li][tp_jo][tp_e][tp_nimi][tp_ni]
+[tp_nimi][tp_ale][tp_lon][tp_toki]...!
+ 
+[tp_moli],[tp_utala],[tp_pakala],[tp_ike]
+[tp_nena],[tp_lupa],[tp_leko],[tp_sike]
+[tp_lon],[tp_tan],[tp_kepeken],[tp_tawa]
+[tp_luka],[tp_noka],[tp_sijelo],[tp_lawa]
+ 
+[tp_o][tp_kama][tp_sona]! [tp_o][tp_kama][tp_sona]!
+[tp_o][tp_kama][tp_sona]! [tp_o][tp_kama][tp_sona]! [tp_e]
+[tp_nimi][tp_ale][tp_lon][tp_toki][tp_pona]!
+ 
+[tp_supa],[tp_linja],[tp_insa],[tp_selo]
+[tp_ko],[tp_kiwen],[tp_kon],[tp_telo]
+[tp_sewi],[tp_anpa],[tp_sinpin],[tp_monsi]
+[tp_jan],[tp_meli],[tp_mije],[tp_tonsi]
+ 
+[tp_pona]! [tp_ni][tp_la][tp_mi][tp_tu][tp_e][tp_nasin]!
+[tp_taso],[tp_musi][tp_li][tp_pini][tp_ala].
+[tp_mi][tp_o][tp_awen]!
+ 
+[tp_poka],[tp_nasin],[tp_kulupu],[tp_poki]
+[tp_sitelen],[tp_nimi],[tp_lipu],[tp_toki]
+[tp_lete],[tp_seli],[tp_suli],[tp_lili]
+[tp_kasi],[tp_pan],[tp_moku],[tp_kili]
+ 
+[tp_nimi][tp_ale][tp_mute][tp_luka][tp_luka][tp_tu][tp_taso][tp_la]
+[tp_jan][tp_ale][tp_li][tp_ken][tp_lon][tp_kulupu][tp_pi][tp_toki][tp_pona]
+ 
+[tp_nasa],[tp_ante],[tp_jasima],[tp_sama]
+[tp_lape],[tp_tomo],[tp_pali],[tp_mama]
+[tp_ma],[tp_suno],[tp_mun],[tp_palisa]
+[tp_ilo],[tp_nanpa],[tp_sona],[tp_alasa]
+ 
+[tp_pona][tp_a]! [tp_o][tp_moku][tp_e][tp_kon]. [tp_nimi][tp_mute][tp_mute][tp_taso][tp_li][tp_kama].
+[tp_o][tp_kute][tp_pona]!
+ 
+[tp_kama],[tp_open],[tp_awen],[tp_pini]
+[tp_wile],[tp_esun],[tp_mani],[tp_kipisi]
+[tp_pana],[tp_jo],[tp_lanpan],[tp_tenpo]
+[tp_weka],[tp_jaki],[tp_ale],[tp_meso]
+[tp_pilin],[tp_uta],[tp_unpa],[tp_oko]
+[tp_ken],[tp_sin],[tp_namako],[tp_soko]
+ 
+[tp_o][tp_kama][tp_sona]! [tp_o][tp_kama][tp_sona]!
+[tp_o][tp_kama][tp_sona]! [tp_o][tp_kama][tp_sona]! [tp_e]
+[tp_nimi][tp_ale][tp_lon][tp_toki][tp_pona]!
+ 
+[tp_len],[tp_taso],[tp_walo],[tp_pimeja]
+[tp_mu],[tp_wawa],[tp_a],[tp_monsuta]
+[tp_n],[tp_kin],[tp_misikeke],[tp_epiku]
+[tp_kokosila],[tp_pu],[tp_ku],[tp_kijetesantakalu]
+ 
+[tp_toki][tp_ni][tp_li][tp_jo][tp_e][tp_nimi][tp_ni]
+[tp_nimi][tp_ale][tp_lon][tp_toki]...
+[tp_toki][tp_ni][tp_li][tp_jo][tp_e][tp_nimi][tp_ni]
+[tp_nimi][tp_ale][tp_lon][tp_toki]...
+[tp_toki][tp_ni][tp_li][tp_jo][tp_e][tp_nimi][tp_ni]
+[tp_nimi][tp_ale][tp_lon][tp_toki]...
+[tp_toki][tp_ni][tp_li][tp_jo][tp_e][tp_nimi][tp_ni]
+[tp_nimi][tp_ale][tp_lon][tp_toki][tp_pona]!
