@@ -1,4 +1,3 @@
-from codecs import xmlcharrefreplace_errors
 import numpy as np
 from PIL import Image
 import PIL
@@ -15,11 +14,12 @@ import bidi.algorithm as bidi
 
 from dotenv import load_dotenv
 load_dotenv()
-PNG_LOC = os.getenv('PNG_LOC')
-SUSSY_LOC = os.getenv('SUSSY_LOC')
+PNG_LOC = os.path.expanduser(os.getenv('PNG_LOC'))
+SUSSY_LOC = os.path.expanduser(os.getenv('SUSSY_LOC'))
 
 with open(SUSSY_LOC + "/replacements.json") as f:
 	replacements = json.load(f)["array"]
+
 
 def format(str, spacing = 1):
 
@@ -34,9 +34,10 @@ def format(str, spacing = 1):
 	with open('ultlf-data/baselines.json') as f:
 		baselines = json.load(f)                     # load the things.
 
-	string = bidi.get_display(str)
-	for n in range(len(replacements)):
-		string = string.replace(replacements[n][0],replacements[n][1])
+	# string = bidi.get_display(str)
+	string = str
+	# for n in range(len(replacements)):
+	# 	string = string.replace(replacements[n][0],replacements[n][1])
 	# `string` now has the replacements
 	array = [] # array of the characters, copied from data.json
 	baselinoids = [] # array of baselines for the string being rendered
@@ -109,21 +110,19 @@ def imgprint(imgarray, str, xpos, ypos, colour, spacing):
 	else:
 		print("uh oh")
 
-def genimage(text, col = [0,0,0], bg = [255,255,255], spacing = 1, vspacing = 11):
+def genimage(text, col = [0,0,0], bg = [255,255,255], spacing = 1, vspacing = 11, linethreshold = 200):
 	# if bold:
 	# 	text = "".join([chr(ord(i) + 57344) for i in text]) : removed
 
-
+	for n in replacements:
+		text = text.replace(n[0],n[1])
 	text = bidi.get_display(text)
-	for n in range(len(replacements)):
-		text = text.replace(replacements[n][0],replacements[n][1])
 
 	lines = text.split("\n")
-
-	linethreshold = 200
-
+	
 	linesx = []
 
+	print(lines)
 	for line in lines:
 		if line == "":
 			linesx  += " "
@@ -138,7 +137,7 @@ def genimage(text, col = [0,0,0], bg = [255,255,255], spacing = 1, vspacing = 11
 				break
 			while len( format(sussoid)[0][0] ) > linethreshold:
 				thing = sussoid.split(" ")
-				while len( format( thing[0])[0][0] ) > linethreshold:
+				while len( format( thing[0] + " ")[0][0] ) > linethreshold + 4:
 					amogushappymeal = thing.pop(0)
 					for x in reversed( range(len(amogushappymeal)) ):
 						if len( format(amogushappymeal[:x] + "-")[0][0] ) < linethreshold:
@@ -148,9 +147,8 @@ def genimage(text, col = [0,0,0], bg = [255,255,255], spacing = 1, vspacing = 11
 
 				linesus.insert(0, thing.pop())
 				sussoid = " ".join(thing)
-				print(sussoid)
 			linesussier.append(sussoid)
-			print(linesussier)
+			#print(linesussier)
 			sussoid = " ".join(linesus)
 		linesx += linesussier
 		linesx.append(sussoid)
