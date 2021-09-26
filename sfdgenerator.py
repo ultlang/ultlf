@@ -53,5 +53,6 @@ for charindex, char in enumerate(chardata):
 
 sfd = sfd + str(chnum) + "\n" + sfdchars
 
-with open('ultlf.sfd', "w") as f:
+with open('files/ultlf.sfd', "w") as f:
 	f.write(sfd)
+	print("the")
