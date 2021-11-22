@@ -9,7 +9,7 @@ import os
 os.system("color")
 
 load_dotenv()
-PNG_LOC = os.getenv('PNG_LOC')
+PNG_LOC = os.path.expanduser(os.getenv('PNG_LOC'))
 
 def generate():
 	white = [255,255,255]
@@ -177,18 +177,41 @@ def generate():
 					end = max(end,match.end())
 			chardata.append([])
 			for el in smallthing:
-				chardata[indexoid].append(el[start:end].replace("v"," "))
+				chardata[indexoid].append(el[start:end])
 			indexoid+=1
 
 	codepoints = [int(val + sus, 16) for val in codepointrows for sus in ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"]]
 	baselines = [val for val in baselines for sus in range(16)]
 
+	baselines2 = baselines.copy()
+	chardata2 = chardata.copy()
+	for x in range(len(chardata2)):
+		while chardata2[x][-1].isspace():
+			chardata2[x].pop(-1)
+		while chardata2[x][0].isspace() and baselines2[x] > 4:
+			chardata2[x].pop(0)
+			baselines2[x] -= 1
+
+	spacelessdata = chardata.copy()
+	for char in spacelessdata:
+		for row in char:
+			row = row.replace("v"," ")
+	
 	with open('ultlf-data/data.json', 'w') as outfile:
-		json.dump(chardata, outfile)
+		json.dump(spacelessdata, outfile)
+	with open('ultlf-data/trimmed.json', 'w') as outfile:
+		json.dump(chardata2, outfile)
 	with open('ultlf-data/codepoints.json', 'w') as outfile:
 		json.dump(codepoints, outfile)
 	with open('ultlf-data/baselines.json', 'w') as outfile:
 		json.dump(baselines, outfile)
+	with open('ultlf-data/trimmed_baselines.json', 'w') as outfile:
+		json.dump(baselines2, outfile)
+	
+	# with open('ultlf-data/strbaselines.json', 'w') as outfile:
+	# 	json.dump(baselines2, outfile)
+	# with open('ultlf-data/strdata.json', 'w') as outfile:
+	# 	json.dump(chardata2, outfile)
 
 if __name__ == "__main__":
 	generate()

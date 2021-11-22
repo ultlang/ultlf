@@ -25,18 +25,18 @@ BeginChars: 1114112 """
 
 sfdchars = ""
 
-with open('ultlf-data/data.json') as f:
+with open('ultlf-data/trimmed.json') as f:
 	chardata = json.load(f)
 with open('ultlf-data/codepoints.json') as f:
 	codepoints = json.load(f)
-with open('ultlf-data/baselines.json') as f:
+with open('ultlf-data/trimmed_baselines.json') as f:
 	baselines = json.load(f)
 
 chnum = 1
 
 for charindex, char in enumerate(chardata):
 	invalid = False
-	charrepr = f"StartChar: u{hex(codepoints[charindex])}\nEncoding: {codepoints[charindex]} {codepoints[charindex]} {chnum}\nWidth: {128*len(char[1]) + 128}\nFlags: W\nLayerCount: 2\nFore\nSplineSet\n"
+	charrepr = f"StartChar: u{hex(codepoints[charindex])}\nEncoding: {codepoints[charindex]} {codepoints[charindex]} {chnum}\nWidth: {128*len(char[0]) + 128}\nFlags: W\nLayerCount: 2\nFore\nSplineSet\n"
 	for lineindex, line in enumerate(char):
 		if "X" in line:
 			invalid = True
