@@ -25,6 +25,9 @@ BeginChars: 1114112 """
 
 sfdchars = ""
 
+import ultlfgen
+ultlfgen.generate()
+
 with open('ultlf-data/trimmed.json') as f:
 	chardata = json.load(f)
 with open('ultlf-data/codepoints.json') as f:
@@ -56,3 +59,9 @@ sfd = sfd + str(chnum) + "\n" + sfdchars
 with open('files/ultlf.sfd', "w") as f:
 	f.write(sfd)
 	print("the")
+
+import subprocess, os
+subprocess.run(["fontforge", "-lang", "ff", "-c","Open($1); Generate($2)", "ultlf.sfd", "ultlf.ttf"], cwd=os.getcwd() + "/files")
+subprocess.run(["fontforge", "-lang", "ff", "-c","Open($1); Generate($2)", "ultlf.sfd", "ultlf.otf"], cwd=os.getcwd() + "/files")
+subprocess.run(["fontforge", "-lang", "ff", "-c","Open($1); Generate($2)", "ultlf.sfd", "ultlf.woff"], cwd=os.getcwd() + "/files")
+subprocess.run(["fontforge", "-lang", "ff", "-c","Open($1); Generate($2)", "ultlf.sfd", "ultlf.woff2"], cwd=os.getcwd() + "/files")
