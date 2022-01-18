@@ -3,4 +3,4 @@ ultlf - the ***ultl***ang ***f***ont: a very bad bitmap font. ~~only available a
 
 now at ultlf 0.10 :amogus:
 ___
-licence deez nuts gottem
+sussy
