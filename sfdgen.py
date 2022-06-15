@@ -4,7 +4,7 @@ sfd = """SplineFontDB: 3.2
 FontName: ultlf
 FullName: ultlf
 FamilyName: ultlf
-Copyright: Copyright (c) 2021, ultlang
+Copyright: Copyright (c) 2022, ultlang
 UComments: "Created with Bees"
 Version: 000.002
 ItalicAngle: 0
@@ -28,11 +28,11 @@ sfdchars = ""
 import ultlfgen
 ultlfgen.generate()
 
-with open('ultlf-data/trimmed.json') as f:
+with open('./ultlf-data/trimmed.json') as f:
 	chardata = json.load(f)
-with open('ultlf-data/codepoints.json') as f:
+with open('./ultlf-data/codepoints.json') as f:
 	codepoints = json.load(f)
-with open('ultlf-data/trimmed_baselines.json') as f:
+with open('./ultlf-data/trimmed_baselines.json') as f:
 	baselines = json.load(f)
 
 chnum = 1
