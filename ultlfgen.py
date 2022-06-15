@@ -2,6 +2,7 @@ import numpy as np
 from PIL import Image
 import re
 import json
+import math
 
 from dotenv import load_dotenv
 import os
@@ -91,7 +92,7 @@ def generate():
 				unithing[tablerow].append(line)
 			
 			tablerow += 1
-			print("\033[1Fgenerating, " +str(round(tablerow / (rowcount/100))) + "% complete")
+			print("\033[1Fgenerating, " +str(math.floor(tablerow / (rowcount/100))) + "% complete")
 
 	for metarow in unithing:
 
@@ -148,7 +149,10 @@ def generate():
 			if row[12:15] != "   ":
 				char4.append(row[12:15])
 			getbaseline.append(row[12:15])
-		baselines.append(getbaseline.index(" # ")+2)
+		try:
+			baselines.append(getbaseline.index(" # ")+2)
+		except:
+			print(getbaseline)
 		codepointrows.append(hexfont["".join(char1)] + hexfont["".join(char2)] + hexfont["".join(char3)] +  hexfont["".join(char4)])
 
 	chardata = []
@@ -186,7 +190,7 @@ def generate():
 	baselines2 = baselines.copy()
 	chardata2 = chardata.copy()
 	for x in range(len(chardata2)):
-		while chardata2[x][-1].isspace():
+		while chardata2[x][-1].isspace() and (len(chardata2[x]) - baselines2[x] > 1):
 			chardata2[x].pop(-1)
 		while chardata2[x][0].isspace() and baselines2[x] > 4:
 			chardata2[x].pop(0)
@@ -208,6 +212,7 @@ def generate():
 	with open('ultlf-data/trimmed_baselines.json', 'w') as outfile:
 		json.dump(baselines2, outfile)
 	
+	print("bee")
 	# with open('ultlf-data/strbaselines.json', 'w') as outfile:
 	# 	json.dump(baselines2, outfile)
 	# with open('ultlf-data/strdata.json', 'w') as outfile:
