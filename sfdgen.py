@@ -15,9 +15,22 @@ Descent: 256
 LayerCount: 2
 Layer: 0 0 "Back" 1
 Layer: 1 0 "Fore" 0
-TTFWeight: 400
+TTFWeight: 500
 TTFWidth: 5
-LineGap: 104
+LineGap: 200
+OS2TypoAscent: 896
+OS2TypoAOffset: 0
+OS2TypoDescent: -256
+OS2TypoDOffset: 0
+OS2TypoLinegap: 200
+OS2WinAscent: 1152
+OS2WinAOffset: 0
+OS2WinDescent: 256
+OS2WinDOffset: 0
+HheadAscent: 896
+HheadAOffset: 0
+HheadDescent: -256
+HheadDOffset: 0
 DEI: 91125
 Encoding: UnicodeFull
 UnicodeInterp: none
