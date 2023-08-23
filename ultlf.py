@@ -285,8 +285,10 @@ if __name__ == "__main__":
 		# œ = 0x02af
 		# æ = 0x02b0 # spacing mod. letters
 		# œ = 0x02ff
-		æ = 0x0180 # latin ext b
-		œ = 0x024f
+		# æ = 0x0180 # latin ext b
+		# œ = 0x024f
+		æ = 0xa720 # latin ext d
+		œ = 0xa7ff
 		#endregion bees
 
 		c = 0
@@ -299,14 +301,14 @@ if __name__ == "__main__":
 			if (e+æ) % 16 == 15 and (e+æ) != œ:
 				thing += "\n "
 		thing += " " * (15 - (œ % 16))
-		#genimage(thing, vspacing = 17)
+		genimage(thing, vspacing = 17)
 
 		# with open(SUSSY_LOC + "/tokirap_sp.txt") as f:
 		# 	tokirap_sp = f.read()
 		# with open(SUSSY_LOC + "/tokirap_la.txt") as f:
 		# 	tokirap_la = f.read()
 
-		genimage("hello, this is amzzzzogus. this is the impostor. i am not sure if bees are real, but your mother is\n bee not...")
+		# genimage("hello, this is amzzzzogus. this is the impostor. i am not sure if bees are real, but your mother is\n bee not...")
 	else:
 		import time
 		t1 = time.time()
