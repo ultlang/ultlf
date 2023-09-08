@@ -4,7 +4,8 @@ sfd = """SplineFontDB: 3.2
 FontName: ultlf
 FullName: ultlf
 FamilyName: ultlf
-Copyright: Copyright (c) 2022, ultlang
+Copyright: Copyright (c) 2023, ultlang
+License: http://scripts.sil.org/OFL
 UComments: "Created with Bees"
 Version: 000.002
 ItalicAngle: 0
