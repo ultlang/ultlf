@@ -1,6 +1,6 @@
 import numpy as np
 from PIL import Image
-import PIL
+import PIL # pillow
 import re
 import math
 import json
@@ -9,11 +9,11 @@ import os
 import ultlfgen
 import discord
 import asyncio
-import bidi.algorithm as bidi
+import bidi.algorithm as bidi # python-bidi
 import unicodedata as uni
 
 
-from dotenv import load_dotenv
+from dotenv import load_dotenv # python-dotenv
 load_dotenv()
 PNG_LOC = os.path.expanduser(os.getenv('PNG_LOC'))
 SUSSY_LOC = os.path.expanduser(os.getenv('SUSSY_LOC'))
@@ -287,21 +287,21 @@ if __name__ == "__main__":
 		# œ = 0x02ff
 		# æ = 0x0180 # latin ext b
 		# œ = 0x024f
-		æ = 0xa720 # latin ext d
-		œ = 0xa7ff
+		# æ = 0xa720 # latin ext d
+		# œ = 0xa7ff
 		#endregion bees
 
-		c = 0
-		thing = " " + " " * (æ % 16)
-		for e in range(œ-æ+1):
-			if (e+æ) in codepoints and "no" not in ["no" for item in chardata[codepoints.index(e+æ)] if "X" in item]:
-				thing += chr(e+æ) + ""
-			else:
-				thing += "\ue22a"
-			if (e+æ) % 16 == 15 and (e+æ) != œ:
-				thing += "\n "
-		thing += " " * (15 - (œ % 16))
-		genimage(thing, vspacing = 17)
+		# c = 0
+		# thing = " " + " " * (æ % 16)
+		# for e in range(œ-æ+1):
+		# 	if (e+æ) in codepoints and "no" not in ["no" for item in chardata[codepoints.index(e+æ)] if "X" in item]:
+		# 		thing += chr(e+æ) + ""
+		# 	else:
+		# 		thing += "\ue22a"
+		# 	if (e+æ) % 16 == 15 and (e+æ) != œ:
+		# 		thing += "\n "
+		# thing += " " * (15 - (œ % 16))
+		# genimage(thing, vspacing = 17)
 
 		# with open(SUSSY_LOC + "/tokirap_sp.txt") as f:
 		# 	tokirap_sp = f.read()

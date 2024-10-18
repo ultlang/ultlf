@@ -212,7 +212,7 @@ def generate():
 	with open('ultlf-data/trimmed_baselines.json', 'w') as outfile:
 		json.dump(baselines2, outfile)
 	
-	print("bee")
+	print("generated :3")
 	# with open('ultlf-data/strbaselines.json', 'w') as outfile:
 	# 	json.dump(baselines2, outfile)
 	# with open('ultlf-data/strdata.json', 'w') as outfile:

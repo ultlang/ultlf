@@ -75,7 +75,7 @@ with open('files/ultlf.sfd', "w") as f:
 	print("the")
 
 import subprocess, os
-subprocess.run(["fontforge", "-lang", "ff", "-c","Open($1); Generate($2)", "ultlf.sfd", "ultlf.ttf"], cwd=os.getcwd() + "/files")
-subprocess.run(["fontforge", "-lang", "ff", "-c","Open($1); Generate($2)", "ultlf.sfd", "ultlf.otf"], cwd=os.getcwd() + "/files")
-subprocess.run(["fontforge", "-lang", "ff", "-c","Open($1); Generate($2)", "ultlf.sfd", "ultlf.woff"], cwd=os.getcwd() + "/files")
-subprocess.run(["fontforge", "-lang", "ff", "-c","Open($1); Generate($2)", "ultlf.sfd", "ultlf.woff2"], cwd=os.getcwd() + "/files")
+subprocess.run(["fontforge", "-lang", "ff", "-c","Open($1); Generate($2)", "ultlf.sfd", "ultlf.ttf"], shell=True, cwd=os.getcwd() + "/files")
+subprocess.run(["fontforge", "-lang", "ff", "-c","Open($1); Generate($2)", "ultlf.sfd", "ultlf.otf"], shell=True, cwd=os.getcwd() + "/files")
+subprocess.run(["fontforge", "-lang", "ff", "-c","Open($1); Generate($2)", "ultlf.sfd", "ultlf.woff"], shell=True, cwd=os.getcwd() + "/files")
+subprocess.run(["fontforge", "-lang", "ff", "-c","Open($1); Generate($2)", "ultlf.sfd", "ultlf.woff2"], shell=True, cwd=os.getcwd() + "/files")
