@@ -18,22 +18,26 @@ load_dotenv()
 PNG_LOC = os.path.expanduser(os.getenv('PNG_LOC'))
 SUSSY_LOC = os.path.expanduser(os.getenv('SUSSY_LOC'))
 
-with open(SUSSY_LOC + "/replacements.json") as f:
-	replacements = json.load(f)["array"]
-with open(SUSSY_LOC + "/tpreplacements.json") as f:
-	tpreplacements = json.load(f)["array"]
-with open(SUSSY_LOC + "/ktavreplacements.json", encoding = "utf8") as f:
-	ktavreplacements = json.load(f)["array"]
+replacements = tpreplacements = ktavreplacements = chardata = codepoints = baselinedata = puadia = puadiaall = ""
+def load():
+	global replacements, tpreplacements, ktavreplacements, chardata, codepoints, baselinedata, puadia, puadiaall
+	with open(SUSSY_LOC + "/replacements.json") as f:
+		replacements = json.load(f)["array"]
+	with open(SUSSY_LOC + "/tpreplacements.json") as f:
+		tpreplacements = json.load(f)["array"]
+	with open(SUSSY_LOC + "/ktavreplacements.json", encoding = "utf8") as f:
+		ktavreplacements = json.load(f)["array"]
 
-with open('ultlf-data/trimmed.json') as f:
-	chardata = json.load(f)
-with open('ultlf-data/codepoints.json') as f:
-	codepoints = json.load(f)
-with open('ultlf-data/trimmed_baselines.json') as f:
-	baselinedata = json.load(f)
-with open('thingies/puadia.json') as f:
-	puadia = json.load(f)
-puadiaall = sum(puadia.values(), [])
+	with open('ultlf-data/trimmed.json') as f:
+		chardata = json.load(f)
+	with open('ultlf-data/codepoints.json') as f:
+		codepoints = json.load(f)
+	with open('ultlf-data/trimmed_baselines.json') as f:
+		baselinedata = json.load(f)
+	with open('thingies/puadia.json') as f:
+		puadia = json.load(f)
+	puadiaall = sum(puadia.values(), [])
+load()
 		
 
 ###################################
