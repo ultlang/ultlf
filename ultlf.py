@@ -179,7 +179,7 @@ def gen(string, spacing = 1):
 
 	return out, baseline, "OK"
 
-def genimage(text, col = [0,0,0], bg = [255,255,255], spacing = 1, vspacing = 11, linethreshold = 200, repoptions = ""):
+def genimage(text, col = [0,0,0], bg = [255,255,255], spacing = 1, vspacing = 11, linethreshold = 200, repoptions = "", scale = 10):
 
 	text = bidi.get_display(text)
 
@@ -237,7 +237,7 @@ def genimage(text, col = [0,0,0], bg = [255,255,255], spacing = 1, vspacing = 11
 		if lines[l] != "":
 			imgprint(aaa, lines[l] , 1 , 1+bls[0]+l*vspacing , col, spacing)
 
-	im = Image.fromarray(aaa).resize([10 * imgwidth ,10 * imgheight],PIL.Image.NEAREST).save('ul.png')
+	im = Image.fromarray(aaa).resize([scale * imgwidth ,scale * imgheight],PIL.Image.NEAREST).save('ul.png')
 	print("printed " + text)
 	return True
 
