@@ -90,7 +90,7 @@ def sussysplit(string):
 def gen(string, spacing = 1):
 	global chardata, codepoints, baselinedata
 
-	if os.path.getmtime("ultlf-data/data.json") < os.path.getmtime(PNG_LOC + "/ultlf.png"):
+	if os.path.getmtime("ultlf-data/codepoints.json") < os.path.getmtime(PNG_LOC + "/ultlf.png"):
 		print("out of date; regenerating from file")
 		ultlfgen.generate()
 
