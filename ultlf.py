@@ -116,6 +116,8 @@ def gen(string, spacing = 1):
 			if 230 in [uni.combining(char) for char in glyph] or 214 in [uni.combining(char) for char in glyph]:
 				if glyph[0] == "i":
 					glyph = "ı" + glyph[1:]
+				if glyph[0] == "j":
+					glyph = "ȷ" + glyph[1:]
 
 			baseglyph = chardata[codepoints.index(ord(glyph[0]))]
 			baseline = baselinedata[codepoints.index(ord(glyph[0]))]
@@ -138,9 +140,9 @@ def gen(string, spacing = 1):
 						combglyph = trim( chardata[codepoints.index(ord(char))][:-5] )
 						combbaseline = baselinedata[codepoints.index(ord(char))]
 						if len(combglyph[1]) > len(baseglyph[1]):
-							baseglyph = [ row + (len(baseglyph[1])-len(row)) * " " for row in baseglyph]
+							baseglyph = [ row + (len(combglyph[1])-len(row)) * " " for row in baseglyph]
 						elif len(combglyph[1]) < len(baseglyph[1]):
-							combglyph = [ (len(combglyph[1])-len(row)) * " " + row  for row in combglyph]
+							combglyph = [ (len(baseglyph[1])-len(row)) * " " + row  for row in combglyph]
 						baseglyph = combglyph + baseglyph
 						baseline = baseline + combbaseline - 4
 
@@ -281,7 +283,8 @@ if __name__ == "__main__":
 			codepoints = json.load(f)
 		with open('ultlf-data/data.json') as f:
 			chardata = json.load(f)
-
+		
+		termprint("j̚ i̚ ʝ̚ j̇̚ i̇̚")
 		#region bees
 		# æ = 0xe200 # sitelen pona
 		# œ = 0xe288
